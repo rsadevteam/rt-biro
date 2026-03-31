@@ -73,6 +73,8 @@ export default function Contact() {
                   label: "Adresa",
                   value: "Karađorđeva 73A",
                   sub: "78250 Laktaši, BiH",
+                  href: null,
+                  subHref: null,
                 },
                 {
                   icon: (
@@ -82,7 +84,9 @@ export default function Contact() {
                   ),
                   label: "Telefon",
                   value: "+387 65 256 842",
+                  href: "tel:+38765256842",
                   sub: "+387 51 532 535",
+                  subHref: "tel:+38751532535",
                 },
                 {
                   icon: (
@@ -93,7 +97,9 @@ export default function Contact() {
                   ),
                   label: "E-mail",
                   value: "mtbiro@live.com",
+                  href: "mailto:mtbiro@live.com",
                   sub: null,
+                  subHref: null,
                 },
                 {
                   icon: (
@@ -104,7 +110,9 @@ export default function Contact() {
                   ),
                   label: "Radno vrijeme",
                   value: "Pon – Pet: 08:00 – 16:00",
+                  href: null,
                   sub: "Sub – Ned: Zatvoreno",
+                  subHref: null,
                 },
               ].map((item, i) => (
                 <div
@@ -118,9 +126,21 @@ export default function Contact() {
                     <div className="text-[10px] tracking-[0.25em] uppercase text-cream/30 mb-1">
                       {item.label}
                     </div>
-                    <div className="text-cream text-sm font-medium">{item.value}</div>
+                    {item.href ? (
+                      <a href={item.href} className="text-cream text-sm font-medium hover:text-forest transition-colors duration-200">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <div className="text-cream text-sm font-medium">{item.value}</div>
+                    )}
                     {item.sub && (
-                      <div className="text-cream/50 text-sm font-light">{item.sub}</div>
+                      item.subHref ? (
+                        <a href={item.subHref} className="text-cream/50 text-sm font-light hover:text-forest transition-colors duration-200">
+                          {item.sub}
+                        </a>
+                      ) : (
+                        <div className="text-cream/50 text-sm font-light">{item.sub}</div>
+                      )
                     )}
                   </div>
                 </div>
