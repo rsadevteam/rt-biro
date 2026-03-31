@@ -127,7 +127,7 @@ export default function Contact() {
                       {item.label}
                     </div>
                     {item.href ? (
-                      <a href={item.href} className="text-cream text-sm font-medium hover:text-forest transition-colors duration-200">
+                      <a href={item.href} className="block text-cream text-sm font-medium hover:text-forest transition-colors duration-200">
                         {item.value}
                       </a>
                     ) : (
@@ -135,7 +135,7 @@ export default function Contact() {
                     )}
                     {item.sub && (
                       item.subHref ? (
-                        <a href={item.subHref} className="text-cream/50 text-sm font-light hover:text-forest transition-colors duration-200">
+                        <a href={item.subHref} className="block text-cream/50 text-sm font-light hover:text-forest transition-colors duration-200">
                           {item.sub}
                         </a>
                       ) : (
