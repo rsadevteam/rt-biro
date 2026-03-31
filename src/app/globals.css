@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #F5F0E8;
+  --color-cream-dark: #EDE7D9;
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-light: #2C2C2C;
+  --color-forest: #2D6A4F;
+  --color-forest-light: #3D8A6A;
+  --color-gold: #B8960C;
+  --color-sand: #D9CFC0;
+  --color-muted: #7A736B;
+  --color-offwhite: #FAF7F2;
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F5F0E8;
+  color: #1A1A1A;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Paper grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Grid background pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(26, 26, 26, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-grid-light {
+  background-image:
+    linear-gradient(to right, rgba(245, 240, 232, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 240, 232, 0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Reveal animation for in-view elements */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+.reveal-delay-5 { transition-delay: 500ms; }
+.reveal-delay-6 { transition-delay: 600ms; }
+
+/* Service card hover */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: #2D6A4F !important;
+  box-shadow: 0 20px 60px rgba(26, 26, 26, 0.08);
+}
+
+/* Form inputs */
+.form-input {
+  background: transparent;
+  border: 1px solid rgba(245, 240, 232, 0.2);
+  color: #F5F0E8;
+  padding: 14px 16px;
+  width: 100%;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  transition: border-color 0.3s ease;
+  outline: none;
+  -webkit-appearance: none;
+}
+.form-input::placeholder {
+  color: rgba(245, 240, 232, 0.35);
+}
+.form-input:focus {
+  border-color: #2D6A4F;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9CFC0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2D6A4F;
+}
+
+/* Hover underline link */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #2D6A4F;
+  transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Process step connector */
+.step-line {
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 28px);
+  right: calc(-50% + 28px);
+  height: 1px;
+  background: linear-gradient(to right, #D9CFC0, #D9CFC0);
+}
+
+/* Large decorative number */
+.deco-number {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(26, 26, 26, 0.06);
+  user-select: none;
+  pointer-events: none;
+}
+
+.deco-number-light {
+  -webkit-text-stroke: 1px rgba(245, 240, 232, 0.12);
+}
